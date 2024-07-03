@@ -21,7 +21,6 @@ const followers = get("followers");
 const following = get("following");
 const user_location = get("location");
 const page = get("page");
-const twitter = get("twitter");
 const company = get("company");
 let darkMode = false;
 
@@ -98,8 +97,8 @@ function updateProfile(data) {
     user_location.innerText = checkNull(data.location, user_location) ? data.location : "Not Available";
     page.innerText = checkNull(data.blog, page) ? data.blog : "Not Available";
     page.href = checkNull(data.blog, page) ? data.blog : "#";
-    twitter.innerText = checkNull(data.twitter_username, twitter) ? data.twitter_username : "Not Available";
-    twitter.href = checkNull(data.twitter_username, twitter) ? `https://twitter.com/${data.twitter_username}` : "#";
+    // twitter.innerText = checkNull(data.twitter_username, twitter) ? data.twitter_username : "Not Available";
+    // twitter.href = checkNull(data.twitter_username, twitter) ? `https://twitter.com/${data.twitter_username}` : "#";
     company.innerText = checkNull(data.company, company) ? data.company : "Not Available";
     searchbar.classList.toggle("active");
     profilecontainer.classList.toggle("active");
@@ -149,9 +148,9 @@ function lightModeProperties() {
 //INITIALISE UI
 function init() {
   //initialise dark-mode variable to false;
-  //darkMode = true -> dark mode enable karna h 
-  //darMode = false -> light mode enable karna h 
-  darkMode = false;
+  darkMode = true 
+//   darMode = false -> light mode enable karna h 
+//   darkMode = false;
 
   //HW
 // const prefersDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -159,22 +158,19 @@ function init() {
   const value = localStorage.getItem("dark-mode");
 
   if(value === null) {
-    console.log("null k andar");
     localStorage.setItem("dark-mode", darkMode);
     lightModeProperties();
   }
   else if(value == "true") {
-    console.log("truer k andar");
     darkModeProperties();
   }
   else if(value == "false") {
-    console.log("false k andar");
     lightModeProperties();
   }
 
 
   //by default, pranaygupta ki info show krre h UI pr
-  getUserData(url + "Ayush-Vish");
+  getUserData(url + "murtazaj1");
 }
 
 init();
